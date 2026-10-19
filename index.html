@@ -2,357 +2,1092 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FreeLearn Academy | Learn for Free</title>
-<style>
-:root {
-  --blue: #2457e6;
-  --dark: #14213d;
-  --light: #f4f7ff;
-  --green: #16845b;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  color: var(--dark);
-  background: #fff;
-  line-height: 1.6;
-}
-header {
-  background: white;
-  padding: 14px 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  box-shadow: 0 2px 12px #15254a12;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-.logo { font-size: 20px; font-weight: 800; color: var(--blue); }
-nav { display: flex; gap: 15px; flex-wrap: wrap; }
-nav a { text-decoration: none; color: var(--dark); font-size: 14px; }
-.hero {
-  padding: 65px 7%;
-  background: linear-gradient(135deg,#eaf0ff,#f3fff9);
-}
-.hero h1 { font-size: clamp(32px,6vw,52px); line-height: 1.15; margin: 12px 0; }
-.hero p { max-width: 600px; color: #536078; }
-.tag { color: var(--green); font-weight: bold; }
-.btn {
-  display: inline-block;
-  border: 0;
-  border-radius: 9px;
-  padding: 12px 17px;
-  background: var(--blue);
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-  cursor: pointer;
-  margin: 5px 5px 5px 0;
-}
-.btn.secondary { background: white; color: var(--blue); border: 1px solid #ccd7ff; }
-.btn:disabled { background: #aeb7ca; cursor: not-allowed; }
-section { padding: 42px 6%; }
-section h2 { font-size: 27px; margin-bottom: 5px; }
-.subtitle { color: #64718a; margin-top: 0; }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(min(100%,240px),1fr));
-  gap: 18px;
-  margin-top: 22px;
-}
-.card {
-  border: 1px solid #e3e9f5;
-  border-radius: 15px;
-  padding: 20px;
-  background: white;
-  box-shadow: 0 5px 18px #15254a08;
-}
-.card h3 { margin-top: 5px; }
-.emoji { font-size: 30px; }
-.pill {
-  display: inline-block;
-  background: #eaf0ff;
-  color: var(--blue);
-  border-radius: 20px;
-  padding: 3px 10px;
-  font-size: 12px;
-  font-weight: bold;
-}
-.lesson-content {
-  background: var(--light);
-  border-radius: 12px;
-  padding: 16px;
-  margin-top: 12px;
-}
-.hidden { display: none; }
-#quiz-area { background: var(--light); padding: 20px; border-radius: 14px; }
-.question { padding: 12px 0; border-bottom: 1px solid #dce4f5; }
-.question label { display: block; padding: 5px 0; cursor: pointer; }
-#quiz-result { font-weight: bold; margin-top: 15px; }
-.notice {
-  background: #fff8e5;
-  border: 1px solid #f0dfa8;
-  padding: 14px;
-  border-radius: 10px;
-  font-size: 14px;
-}
-footer {
-  text-align: center;
-  padding: 28px 15px;
-  background: var(--dark);
-  color: white;
-}
-footer a { color: #cddaff; }
-input[type="text"] {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccd5e5;
-  border-radius: 8px;
-  font-size: 16px;
-}
-@media(max-width:500px) {
-  header { align-items: flex-start; }
-  nav { gap: 10px; }
-  nav a { font-size: 13px; }
-  .hero { padding: 45px 6%; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10234f">
+  <meta name="description" content="FreeLearn Academy - free study notes, online classes, recorded lessons and quizzes.">
+
+  <title>FreeLearn Academy | Learn Anywhere</title>
+
+  <style>
+    :root {
+      --navy: #10234f;
+      --blue: #1769e0;
+      --light: #eef4ff;
+      --white: #ffffff;
+      --text: #202b3c;
+      --muted: #617087;
+      --green: #12805c;
+      --border: #dce4ef;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f7fb;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--navy);
+      color: white;
+      padding: 24px 16px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(26px, 6vw, 40px);
+    }
+
+    header p {
+      margin: 8px auto 0;
+      max-width: 650px;
+    }
+
+    nav {
+      background: #fff;
+      padding: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 8px #00000012;
+    }
+
+    nav a {
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 8px 10px;
+      border-radius: 7px;
+    }
+
+    nav a:hover {
+      background: var(--light);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #10234f, #1769e0);
+      color: white;
+      padding: 42px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: clamp(25px, 5vw, 36px);
+      margin: 0 0 12px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto 20px;
+    }
+
+    .button {
+      display: inline-block;
+      border: none;
+      border-radius: 9px;
+      background: var(--blue);
+      color: white;
+      padding: 12px 17px;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+      margin: 4px 3px;
+    }
+
+    .button:hover {
+      filter: brightness(0.92);
+    }
+
+    .button-light {
+      background: white;
+      color: var(--navy);
+    }
+
+    main {
+      width: 100%;
+      max-width: 1050px;
+      padding: 20px 14px 40px;
+      margin: auto;
+    }
+
+    section {
+      margin: 24px 0;
+      scroll-margin-top: 80px;
+    }
+
+    .section-title {
+      color: var(--navy);
+      font-size: clamp(23px, 5vw, 30px);
+      margin-bottom: 6px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      margin-top: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      box-shadow: 0 4px 14px #10234f0a;
+      min-width: 0;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--navy);
+    }
+
+    .subject-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .subject-card .button {
+      margin-top: auto;
+    }
+
+    .subject-icon {
+      font-size: 32px;
+    }
+
+    .class-card {
+      border-top: 5px solid var(--blue);
+    }
+
+    .live-card {
+      border-top-color: #d92d42;
+    }
+
+    .recorded-card {
+      border-top-color: var(--green);
+    }
+
+    .lesson {
+      margin-top: 18px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      scroll-margin-top: 80px;
+    }
+
+    .lesson summary {
+      cursor: pointer;
+      background: var(--light);
+      color: var(--navy);
+      font-size: 18px;
+      font-weight: bold;
+      padding: 16px;
+    }
+
+    .lesson-body {
+      padding: 18px;
+      overflow-wrap: anywhere;
+    }
+
+    .lesson-body h4 {
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+
+    .formula {
+      background: #f0f5ff;
+      padding: 12px;
+      border-left: 4px solid var(--blue);
+      border-radius: 5px;
+      overflow-wrap: anywhere;
+    }
+
+    .question {
+      background: #f8faff;
+      border: 1px solid var(--border);
+      padding: 14px;
+      border-radius: 10px;
+      margin: 14px 0;
+    }
+
+    .question label {
+      display: block;
+      padding: 6px 0;
+      cursor: pointer;
+    }
+
+    .question input {
+      margin-right: 7px;
+    }
+
+    .quiz-result {
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    .success {
+      color: #087443;
+    }
+
+    .error {
+      color: #b42318;
+    }
+
+    .video-placeholder {
+      background: #edf1f7;
+      border: 1px dashed #a8b5c9;
+      border-radius: 10px;
+      padding: 20px 12px;
+      text-align: center;
+      margin: 12px 0;
+    }
+
+    .video-placeholder span {
+      display: block;
+      font-size: 35px;
+    }
+
+    .small {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .checklist li {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      text-align: center;
+      background: var(--navy);
+      color: white;
+      padding: 25px 16px;
+    }
+
+    footer a {
+      color: #dce8ff;
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        gap: 3px;
+        padding: 8px 4px;
+      }
+
+      nav a {
+        font-size: 12px;
+        padding: 7px;
+      }
+
+      .card {
+        padding: 16px;
+      }
+
+      .lesson-body {
+        padding: 14px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-  <div class="logo">🎓 FreeLearn Academy</div>
-  <nav>
+  <header>
+    <h1>🎓 FreeLearn Academy</h1>
+    <p>Your learning journey starts here. Study, practise and grow from anywhere.</p>
+  </header>
+
+  <nav aria-label="Main navigation">
     <a href="#home">Home</a>
-    <a href="#lessons">Lessons</a>
+    <a href="#subjects">Subjects</a>
+    <a href="#live">Live Class</a>
+    <a href="#recorded">Recorded Lessons</a>
     <a href="#quiz">Quizzes</a>
-    <a href="#live">Live Classes</a>
+    <a href="#about">About</a>
   </nav>
-</header>
 
-<main>
-<section class="hero" id="home">
-  <span class="tag">YOUR FUTURE STARTS HERE</span>
-  <h1>Learn anything.<br>Grow every day.</h1>
-  <p>
-    Welcome to FreeLearn Academy! Explore lessons, practise
-    your knowledge with quizzes, and join live classes.
-    Learning should be accessible to everyone.
-  </p>
-  <a class="btn" href="#lessons">Explore Lessons</a>
-  <a class="btn secondary" href="#quiz">Take a Quiz</a>
-</section>
+  <div class="hero" id="home">
+    <h2>Learn More. Achieve More.</h2>
+    <p>
+      Access university study notes, join online classes,
+      practise with quizzes and learn at your own pace.
+    </p>
+    <a class="button button-light" href="#subjects">Explore Subjects</a>
+    <a class="button" href="#live">Join a Live Class</a>
+  </div>
 
-<section id="lessons">
-  <h2>📚 Free Lessons</h2>
-  <p class="subtitle">Choose a subject to start learning.</p>
+  <main>
 
-  <div class="grid">
-    <article class="card">
-      <div class="emoji">💻</div>
-      <span class="pill">ICT</span>
-      <h3>Introduction to Computing</h3>
-      <p>Learn about computers, hardware, software, and data.</p>
-      <button class="btn" onclick="toggleLesson('ict')">Open Lesson</button>
-      <div id="ict" class="lesson-content hidden">
-        <h4>What is a computer?</h4>
-        <p>A computer is an electronic device that accepts data,
-        processes it, stores it, and produces information.</p>
-        <h4>Basic computer components</h4>
-        <ul>
-          <li><b>Input:</b> Keyboard and mouse.</li>
-          <li><b>Processing:</b> The CPU processes instructions.</li>
-          <li><b>Output:</b> Monitor and printer.</li>
-          <li><b>Storage:</b> SSD, hard drive, and flash drive.</li>
+    <!-- SUBJECTS -->
+    <section id="subjects">
+      <h2 class="section-title">📚 My University Subjects</h2>
+      <p class="section-intro">
+        Choose a subject to open its study notes and revision questions.
+      </p>
+
+      <div class="grid">
+        <div class="card subject-card">
+          <span class="subject-icon">🎨</span>
+          <h3>Visual Literacy</h3>
+          <p>Understand images, symbols, visual design and communication.</p>
+          <a class="button" href="#visual">Study Notes</a>
+        </div>
+
+        <div class="card subject-card">
+          <span class="subject-icon">📐</span>
+          <h3>Calculus</h3>
+          <p>Study functions, logarithms, surds, differentiation and integration.</p>
+          <a class="button" href="#calculus">Study Notes</a>
+        </div>
+
+        <div class="card subject-card">
+          <span class="subject-icon">🏫</span>
+          <h3>Foundations of Education</h3>
+          <p>Explore educational theories, teaching, learning and society.</p>
+          <a class="button" href="#education">Study Notes</a>
+        </div>
+
+        <div class="card subject-card">
+          <span class="subject-icon">📝</span>
+          <h3>Technical Report and Communication</h3>
+          <p>Develop academic writing, report writing and communication skills.</p>
+          <a class="button" href="#communication">Study Notes</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE CLASS -->
+    <section id="live">
+      <h2 class="section-title">🔴 Live Online Classes</h2>
+      <p class="section-intro">
+        Join an online lesson from your phone, tablet or computer.
+      </p>
+
+      <div class="card class-card live-card">
+        <h3>FreeLearn Academy Live Classroom</h3>
+        <p>
+          Our live classroom uses Google Meet. Open the meeting link
+          at the announced class time.
+        </p>
+        <p><strong>Platform:</strong> Google Meet</p>
+        <p><strong>Schedule:</strong> Add your class date and time here.</p>
+
+        <a
+          class="button"
+          href="https://meet.google.com/yzc-bcua-dps"
+          target="_blank"
+          rel="noopener noreferrer">
+          Join Live Class
+        </a>
+
+        <p class="small">
+          You may need to sign in or ask the meeting host for permission to join.
+          Do not share private meeting information publicly.
+        </p>
+      </div>
+    </section>
+
+    <!-- RECORDED LESSONS -->
+    <section id="recorded">
+      <h2 class="section-title">▶️ Recorded Lessons</h2>
+      <p class="section-intro">
+        Video lessons will appear here. Replace each placeholder with
+        your own YouTube video when it is ready.
+      </p>
+
+      <div class="grid">
+
+        <div class="card recorded-card">
+          <h3>Visual Literacy Videos</h3>
+          <div class="video-placeholder">
+            <span>🎬</span>
+            <strong>Video coming soon</strong>
+            <p class="small">Replace this box with a lesson video.</p>
+          </div>
+          <a
+            class="button"
+            href="https://www.youtube.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+            Find Videos
+          </a>
+        </div>
+
+        <div class="card recorded-card">
+          <h3>Calculus Videos</h3>
+          <div class="video-placeholder">
+            <span>📐</span>
+            <strong>Video coming soon</strong>
+            <p class="small">Add lessons on functions, surds or calculus.</p>
+          </div>
+          <a
+            class="button"
+            href="https://www.youtube.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+            Find Videos
+          </a>
+        </div>
+
+        <div class="card recorded-card">
+          <h3>Foundations of Education Videos</h3>
+          <div class="video-placeholder">
+            <span>🏫</span>
+            <strong>Video coming soon</strong>
+            <p class="small">Add lessons about educational theories.</p>
+          </div>
+          <a
+            class="button"
+            href="https://www.youtube.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+            Find Videos
+          </a>
+        </div>
+
+        <div class="card recorded-card">
+          <h3>Technical Report and Communication Videos</h3>
+          <div class="video-placeholder">
+            <span>📝</span>
+            <strong>Video coming soon</strong>
+            <p class="small">Add academic writing and communication lessons.</p>
+          </div>
+          <a
+            class="button"
+            href="https://www.youtube.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+            Find Videos
+          </a>
+        </div>
+
+      </div>
+
+      <p class="small">
+        To embed a YouTube lesson later, replace a placeholder with:
+        an iframe using the video's embed URL, such as
+        https://www.youtube-nocookie.com/embed/VIDEO_ID.
+        Replace VIDEO_ID with the actual video ID.
+      </p>
+    </section>
+
+    <!-- VISUAL LITERACY NOTES -->
+    <section id="visual">
+      <h2 class="section-title">🎨 Visual Literacy Notes</h2>
+
+      <details class="lesson" open>
+        <summary>Lesson 1: Meaning and Importance</summary>
+        <div class="lesson-body">
+          <h4>What is visual literacy?</h4>
+          <p>
+            Visual literacy is the ability to understand, interpret,
+            evaluate and communicate information presented through images,
+            symbols, diagrams, charts, photographs and other visual forms.
+          </p>
+
+          <h4>Importance of visual literacy</h4>
+          <ul>
+            <li>Helps people understand information quickly.</li>
+            <li>Supports learning through diagrams, pictures and charts.</li>
+            <li>Helps people evaluate advertisements and media messages.</li>
+            <li>Improves communication when words alone are insufficient.</li>
+            <li>Encourages critical thinking about images and their meanings.</li>
+          </ul>
+
+          <h4>Example</h4>
+          <p>
+            A red traffic light communicates "stop" without needing
+            a written sentence. A graph can show changes in student
+            performance over time.
+          </p>
+        </div>
+      </details>
+
+      <details class="lesson">
+        <summary>Lesson 2: Elements and Principles of Design</summary>
+        <div class="lesson-body">
+          <h4>Elements of visual design</h4>
+          <ul>
+            <li><strong>Line:</strong> Guides the viewer's eyes and outlines shapes.</li>
+            <li><strong>Shape:</strong> A defined two-dimensional area.</li>
+            <li><strong>Colour:</strong> Creates mood, contrast and emphasis.</li>
+            <li><strong>Texture:</strong> Suggests how a surface feels or looks.</li>
+            <li><strong>Space:</strong> The area around or between objects.</li>
+            <li><strong>Form:</strong> Gives objects a three-dimensional appearance.</li>
+            <li><strong>Value:</strong> The lightness or darkness of a colour.</li>
+          </ul>
+
+          <h4>Principles of design</h4>
+          <ul>
+            <li><strong>Balance:</strong> Distribution of visual weight.</li>
+            <li><strong>Contrast:</strong> Differences that make elements stand out.</li>
+            <li><strong>Emphasis:</strong> The main point that attracts attention.</li>
+            <li><strong>Unity:</strong> How elements work together as a whole.</li>
+            <li><strong>Proportion:</strong> The relative sizes of elements.</li>
+            <li><strong>Repetition:</strong> Reusing elements to create consistency.</li>
+            <li><strong>Movement:</strong> Guiding the viewer's eyes through a design.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="lesson">
+        <summary>Lesson 3: Analysing Images and Visual Messages</summary>
+        <div class="lesson-body">
+          <p>When analysing an image, ask these questions:</p>
+          <ol>
+            <li><strong>Observe:</strong> What objects, people, colours and symbols are visible?</li>
+            <li><strong>Describe:</strong> What is happening in the image?</li>
+            <li><strong>Interpret:</strong> What message might the creator be communicating?</li>
+            <li><strong>Evaluate:</strong> Is the image convincing, fair and reliable?</li>
+            <li><strong>Context:</strong> Who created it, for whom and for what purpose?</li>
+          </ol>
+
+          <h4>Example: An educational poster</h4>
+          <p>
+            A poster showing students reading books may promote education.
+            Its audience could be schoolchildren. Bright colours and
+            large lettering may attract attention. However, you should
+            still examine the source and the message before trusting it.
+          </p>
+
+          <h4>Revision questions</h4>
+          <ol>
+            <li>Define visual literacy.</li>
+            <li>State four elements of visual design.</li>
+            <li>Explain contrast and emphasis.</li>
+            <li>Give two questions you should ask when analysing an image.</li>
+          </ol>
+        </div>
+      </details>
+    </section>
+
+    <!-- CALCULUS NOTES -->
+    <section id="calculus">
+      <h2 class="section-title">📐 Calculus Notes</h2>
+
+      <details class="lesson" open>
+        <summary>Lesson 1: Functions, Domain, Codomain and Range</summary>
+        <div class="lesson-body">
+          <h4>What is a function?</h4>
+          <p>
+            A function is a rule that assigns exactly one output to
+            each permitted input.
+          </p>
+          <div class="formula">
+            Example: f(x) = 3x + 2<br>
+            f(4) = 3(4) + 2 = 14
+          </div>
+
+          <h4>Domain</h4>
+          <p>
+            The domain is the set of all permitted input values.
+            For f(x) = 3x + 2, the domain is all real numbers.
+          </p>
+
+          <h4>Codomain</h4>
+          <p>
+            The codomain is the stated set in which outputs are expected
+            to lie. It is part of how a function is defined.
+          </p>
+
+          <h4>Range</h4>
+          <p>
+            The range is the set of outputs the function actually produces.
+            For f(x) = x² over all real inputs, the range is y ≥ 0.
+          </p>
+
+          <h4>Useful domain rules</h4>
+          <ul>
+            <li>For a fraction, the denominator cannot equal zero.</li>
+            <li>For a real square root, the expression inside must be at least zero.</li>
+            <li>For a real logarithm, its argument must be greater than zero.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="lesson">
+        <summary>Lesson 2: Logarithms and Surds</summary>
+        <div class="lesson-body">
+          <h4>Logarithms</h4>
+          <p>
+            A logarithm tells us the power to which a base must be raised
+            to produce a number.
+          </p>
+          <div class="formula">
+            If 2³ = 8, then log₂(8) = 3.
+          </div>
+          <p>Useful rules, for valid positive arguments:</p>
+          <ul>
+            <li>logₐ(xy) = logₐ(x) + logₐ(y)</li>
+            <li>logₐ(x/y) = logₐ(x) − logₐ(y)</li>
+            <li>logₐ(xⁿ) = n logₐ(x)</li>
+          </ul>
+
+          <h4>Surds</h4>
+          <p>
+            A surd is an expression involving a root that cannot be
+            simplified to a rational number.
+          </p>
+          <div class="formula">
+            √49 = 7<br>
+            √12 = √(4 × 3) = 2√3<br>
+            √89 cannot be simplified further using a perfect-square factor.
+          </div>
+
+          <h4>Quadratic equations and the discriminant</h4>
+          <p>For ax² + bx + c = 0, where a is not zero:</p>
+          <div class="formula">
+            x = (-b ± √(b² − 4ac)) / 2a<br>
+            Discriminant: D = b² − 4ac
+          </div>
+          <ul>
+            <li>D greater than zero: two distinct real roots.</li>
+            <li>D equals zero: one repeated real root.</li>
+            <li>D less than zero: no real roots.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="lesson">
+        <summary>Lesson 3: Differentiation and Integration</summary>
+        <div class="lesson-body">
+          <h4>Differentiation</h4>
+          <p>
+            Differentiation measures the rate at which a function changes.
+            It can also represent the slope of a curve at a point.
+          </p>
+          <div class="formula">
+            If f(x) = xⁿ, then f'(x) = nxⁿ⁻¹.<br>
+            Example: if f(x) = x³, then f'(x) = 3x².
+          </div>
+
+          <h4>Integration</h4>
+          <p>
+            Integration can calculate accumulated quantities and areas.
+            Indefinite integration also reverses differentiation, up to a constant.
+          </p>
+          <div class="formula">
+            ∫xⁿ dx = xⁿ⁺¹/(n + 1) + C, for n ≠ -1.<br>
+            Example: ∫x² dx = x³/3 + C.
+          </div>
+
+          <h4>Revision questions</h4>
+          <ol>
+            <li>If f(x) = 3x + 2, calculate f(4).</li>
+            <li>State the domain of f(x) = 1/x.</li>
+            <li>Simplify √12.</li>
+            <li>Find the discriminant of x² − 5x + 6 = 0.</li>
+            <li>Differentiate f(x) = x³.</li>
+          </ol>
+        </div>
+      </details>
+    </section>
+
+    <!-- FOUNDATIONS OF EDUCATION -->
+    <section id="education">
+      <h2 class="section-title">🏫 Foundations of Education Notes</h2>
+
+      <details class="lesson" open>
+        <summary>Lesson 1: Meaning, Aims and Functions of Education</summary>
+        <div class="lesson-body">
+          <h4>Meaning of education</h4>
+          <p>
+            Education is the process through which people acquire
+            knowledge, skills, values, attitudes and understanding.
+            It can take place in schools, homes, workplaces and communities.
+          </p>
+
+          <h4>Aims of education</h4>
+          <ul>
+            <li>Develop knowledge and intellectual ability.</li>
+            <li>Build practical and professional skills.</li>
+            <li>Promote moral values and responsible citizenship.</li>
+            <li>Prepare people for employment and further learning.</li>
+            <li>Encourage creativity, problem-solving and social development.</li>
+          </ul>
+
+          <h4>Functions of education</h4>
+          <ul>
+            <li><strong>Social:</strong> Passes culture and shared values to new generations.</li>
+            <li><strong>Economic:</strong> Develops skills needed for work and productivity.</li>
+            <li><strong>Political:</strong> Helps people understand citizenship and civic responsibilities.</li>
+            <li><strong>Personal:</strong> Supports individual growth and fulfilment.</li>
+            <li><strong>Cultural:</strong> Preserves and develops cultural knowledge and practices.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="lesson">
+        <summary>Lesson 2: Types of Education</summary>
+        <div class="lesson-body">
+          <h4>Formal education</h4>
+          <p>
+            Structured learning in recognised institutions, usually
+            following a curriculum, timetable and assessment system.
+            Example: studying at a university.
+          </p>
+
+          <h4>Informal education</h4>
+          <p>
+            Learning that occurs through everyday life, experience,
+            observation and interaction. Example: learning a recipe
+            from a family member.
+          </p>
+
+          <h4>Non-formal education</h4>
+          <p>
+            Organised learning outside the usual formal school system.
+            Example: a community workshop or a short vocational course.
+          </p>
+
+          <h4>Philosophy and education</h4>
+          <ul>
+            <li><strong>Idealism:</strong> Emphasises ideas, values and the development of the mind.</li>
+            <li><strong>Realism:</strong> Emphasises reality and learning about the world.</li>
+            <li><strong>Pragmatism:</strong> Emphasises experience, practical activity and problem-solving.</li>
+            <li><strong>Existentialism:</strong> Emphasises individual choice, responsibility and personal meaning.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="lesson">
+        <summary>Lesson 3: Teaching, Learning and the Teacher's Role</summary>
+        <div class="lesson-body">
+          <h4>Teaching</h4>
+          <p>
+            Teaching involves planning and guiding learning experiences
+            so that learners can develop understanding and skills.
+          </p>
+
+          <h4>Learning</h4>
+          <p>
+            Learning is a process through which knowledge, skills,
+            attitudes or behaviour develop through study and experience.
+          </p>
+
+          <h4>Roles of a teacher</h4>
+          <ul>
+            <li>Plan lessons and communicate learning objectives.</li>
+            <li>Explain concepts and organise meaningful activities.</li>
+            <li>Assess progress and provide feedback.</li>
+            <li>Support learners with different needs.</li>
+            <li>Maintain a safe, respectful learning environment.</li>
+            <li>Model professional conduct and ethical behaviour.</li>
+          </ul>
+
+          <h4>Education and society</h4>
+          <p>
+            Education influences social mobility, economic development,
+            citizenship and cultural change. Society also influences
+            what is taught, how schools operate and who has access
+            to educational opportunities.
+          </p>
+
+          <h4>Revision questions</h4>
+          <ol>
+            <li>Define education.</li>
+            <li>Explain three functions of education.</li>
+            <li>Distinguish formal, informal and non-formal education.</li>
+            <li>State four roles of a teacher.</li>
+          </ol>
+        </div>
+      </details>
+    </section>
+
+    <!-- TECHNICAL REPORT AND COMMUNICATION -->
+    <section id="communication">
+      <h2 class="section-title">📝 Technical Report and Communication Notes</h2>
+
+      <details class="lesson" open>
+        <summary>Lesson 1: Communication and Its Types</summary>
+        <div class="lesson-body">
+          <h4>Meaning of communication</h4>
+          <p>
+            Communication is the process of sending and receiving
+            information, ideas or feelings between people.
+          </p>
+
+          <h4>Types of communication</h4>
+          <ul>
+            <li><strong>Verbal:</strong> Spoken communication, such as discussions.</li>
+            <li><strong>Written:</strong> Emails, reports, letters and messages.</li>
+            <li><strong>Non-verbal:</strong> Gestures, facial expressions and posture.</li>
+            <li><strong>Visual:</strong> Charts, diagrams, signs and pictures.</li>
+          </ul>
+
+          <h4>Communication process</h4>
+          <p>
+            A sender develops a message, sends it through a channel,
+            and a receiver interprets it. Feedback helps show whether
+            the message was understood. Noise or distractions can
+            interfere with the process.
+          </p>
+
+          <h4>Barriers to communication</h4>
+          <ul>
+            <li>Language differences.</li>
+            <li>Noise and poor internet connections.</li>
+            <li>Unclear or overly complicated messages.</li>
+            <li>Cultural differences and assumptions.</li>
+            <li>Poor listening or lack of feedback.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="lesson">
+        <summary>Lesson 2: Technical Report Writing</summary>
+        <div class="lesson-body">
+          <h4>What is a technical report?</h4>
+          <p>
+            A technical report is a structured document that presents
+            information about a technical subject, investigation,
+            project, procedure or findings.
+          </p>
+
+          <h4>Common report structure</h4>
+          <ol>
+            <li><strong>Title page:</strong> Report title, author and date.</li>
+            <li><strong>Abstract or executive summary:</strong> A brief overview, if required.</li>
+            <li><strong>Table of contents:</strong> Sections and page numbers, if needed.</li>
+            <li><strong>Introduction:</strong> Background, purpose and objectives.</li>
+            <li><strong>Methodology:</strong> How the work or investigation was conducted.</li>
+            <li><strong>Results or findings:</strong> What was discovered.</li>
+            <li><strong>Discussion:</strong> What the findings mean.</li>
+            <li><strong>Conclusion:</strong> The main outcomes.</li>
+            <li><strong>Recommendations:</strong> Suggested actions, where appropriate.</li>
+            <li><strong>References and appendices:</strong> Sources and supporting material.</li>
+          </ol>
+
+          <p class="small">
+            The exact structure depends on your lecturer's instructions
+            and the type of report.
+          </p>
+        </div>
+      </details>
+
+      <details class="lesson">
+        <summary>Lesson 3: Academic Writing, Referencing and Emails</summary>
+        <div class="lesson-body">
+          <h4>Features of good academic writing</h4>
+          <ul>
+            <li>Clear and precise language.</li>
+            <li>Logical organisation and paragraphs.</li>
+            <li>Evidence to support important claims.</li>
+            <li>Correct grammar, spelling and punctuation.</li>
+            <li>Appropriate formal tone.</li>
+          </ul>
+
+          <h4>Referencing and plagiarism</h4>
+          <p>
+            Referencing acknowledges the sources used in your work.
+            Plagiarism includes presenting someone else's words or ideas
+            as your own without proper acknowledgement. Follow the
+            citation style required by your lecturer.
+          </p>
+
+          <h4>Professional email structure</h4>
+          <ol>
+            <li>Use a clear subject line.</li>
+            <li>Begin with a respectful greeting.</li>
+            <li>State your purpose clearly.</li>
+            <li>Provide relevant details.</li>
+            <li>End politely and include your name.</li>
+          </ol>
+
+          <h4>Example email</h4>
+          <div class="formula">
+            Subject: Request for Clarification on Assignment<br><br>
+            Dear Lecturer,<br><br>
+            I hope you are doing well. I am writing to ask for
+            clarification about the requirements for the assignment.
+            Kindly let me know if there are any specific guidelines
+            we should follow.<br><br>
+            Thank you for your time and assistance.<br><br>
+            Yours sincerely,<br>
+            [Your Name]
+          </div>
+
+          <h4>Revision questions</h4>
+          <ol>
+            <li>Define communication.</li>
+            <li>State four barriers to effective communication.</li>
+            <li>List five sections of a technical report.</li>
+            <li>Explain why referencing is important.</li>
+          </ol>
+        </div>
+      </details>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz">
+      <h2 class="section-title">🧠 Practice Quiz</h2>
+      <p class="section-intro">
+        Answer the questions, then tap Submit Answers to see your score.
+      </p>
+
+      <form id="quizForm" class="card">
+
+        <div class="question">
+          <p><strong>1. If f(x) = 3x + 2, what is f(4)?</strong></p>
+          <label><input type="radio" name="q1" value="a"> 10</label>
+          <label><input type="radio" name="q1" value="b"> 14</label>
+          <label><input type="radio" name="q1" value="c"> 12</label>
+        </div>
+
+        <div class="question">
+          <p><strong>2. Which type of education occurs through everyday experiences?</strong></p>
+          <label><input type="radio" name="q2" value="a"> Formal education</label>
+          <label><input type="radio" name="q2" value="b"> Informal education</label>
+          <label><input type="radio" name="q2" value="c"> Examination education</label>
+        </div>
+
+        <div class="question">
+          <p><strong>3. Which of these is a visual design element?</strong></p>
+          <label><input type="radio" name="q3" value="a"> Colour</label>
+          <label><input type="radio" name="q3" value="b"> Conclusion</label>
+          <label><input type="radio" name="q3" value="c"> Methodology</label>
+        </div>
+
+        <div class="question">
+          <p><strong>4. What is the main purpose of a technical report?</strong></p>
+          <label><input type="radio" name="q4" value="a"> To communicate structured information and findings</label>
+          <label><input type="radio" name="q4" value="b"> To replace every classroom lesson</label>
+          <label><input type="radio" name="q4" value="c"> To entertain without presenting information</label>
+        </div>
+
+        <div class="question">
+          <p><strong>5. What is the derivative of x³?</strong></p>
+          <label><input type="radio" name="q5" value="a"> x²</label>
+          <label><input type="radio" name="q5" value="b"> 3x²</label>
+          <label><input type="radio" name="q5" value="c"> 3x</label>
+        </div>
+
+        <button class="button" type="submit">Submit Answers</button>
+        <button class="button" type="reset" style="background:#64748b">
+          Try Again
+        </button>
+
+        <p id="quizResult" class="quiz-result" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2 class="section-title">ℹ️ About FreeLearn Academy</h2>
+      <div class="card">
+        <p>
+          FreeLearn Academy is a learning website designed to help
+          students access study notes, practise questions, recorded
+          lessons and live online classes.
+        </p>
+
+        <h3>Our learning goals</h3>
+        <ul class="checklist">
+          <li>Make study materials easier to access.</li>
+          <li>Encourage regular practice and independent learning.</li>
+          <li>Support online learning through video and live classes.</li>
+          <li>Help students prepare for assignments and examinations.</li>
         </ul>
-        <p><b>Remember:</b> Data is raw facts; information is
-        processed data that has meaning.</p>
+
+        <p class="small">
+          These notes are study aids. Check your official course outline,
+          lecturer's instructions and prescribed materials for complete
+          course coverage.
+        </p>
       </div>
-    </article>
+    </section>
 
-    <article class="card">
-      <div class="emoji">📝</div>
-      <span class="pill">English</span>
-      <h3>English Grammar Basics</h3>
-      <p>Improve your sentences, vocabulary, and communication.</p>
-      <button class="btn" onclick="toggleLesson('english')">Open Lesson</button>
-      <div id="english" class="lesson-content hidden">
-        <h4>Parts of speech</h4>
-        <ul>
-          <li><b>Noun:</b> A person, place, thing, or idea.</li>
-          <li><b>Verb:</b> An action or state, such as learn or be.</li>
-          <li><b>Adjective:</b> Describes a noun, such as good.</li>
-          <li><b>Adverb:</b> Describes an action, such as slowly.</li>
-        </ul>
-        <h4>Example sentence</h4>
-        <p>"I am learning English every day."</p>
-        <p>"I" is the subject; "am learning" is the verb phrase.</p>
-      </div>
-    </article>
+  </main>
 
-    <article class="card">
-      <div class="emoji">🔐</div>
-      <span class="pill">Cybersecurity</span>
-      <h3>Online Safety Basics</h3>
-      <p>Understand passwords, phishing, and safer internet use.</p>
-      <button class="btn" onclick="toggleLesson('security')">Open Lesson</button>
-      <div id="security" class="lesson-content hidden">
-        <h4>Protect your accounts</h4>
-        <ul>
-          <li>Use unique, strong passwords.</li>
-          <li>Enable two-factor authentication.</li>
-          <li>Never share verification codes.</li>
-          <li>Check links before opening them.</li>
-        </ul>
-        <h4>What is phishing?</h4>
-        <p>Phishing is a trick used to persuade people to reveal
-        passwords, payment details, or other sensitive information.</p>
-        <p>Practise security testing only on systems you own or
-        have clear permission to test.</p>
-      </div>
-    </article>
-  </div>
-</section>
+  <footer>
+    <h3>🎓 FreeLearn Academy</h3>
+    <p>Learn anywhere. Practise every day. Keep growing.</p>
+    <p>&copy; <span id="year"></span> FreeLearn Academy</p>
+    <p><a href="#home">Back to top ↑</a></p>
+  </footer>
 
-<section id="quiz">
-  <h2>🧠 Test Your Knowledge</h2>
-  <p class="subtitle">Answer all three questions to see your score.</p>
+  <script>
+    // Update the footer year automatically.
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
-  <div id="quiz-area">
-    <form id="quiz-form">
-      <div class="question">
-        <b>1. Which component processes computer instructions?</b>
-        <label><input type="radio" name="q1" value="a"> Monitor</label>
-        <label><input type="radio" name="q1" value="b"> CPU</label>
-        <label><input type="radio" name="q1" value="c"> Keyboard</label>
-      </div>
+    // Mark the five-question quiz.
+    document.getElementById("quizForm").addEventListener("submit", function(event) {
+      event.preventDefault();
 
-      <div class="question">
-        <b>2. Which sentence is grammatically correct?</b>
-        <label><input type="radio" name="q2" value="a"> She go to school.</label>
-        <label><input type="radio" name="q2" value="b"> She going school.</label>
-        <label><input type="radio" name="q2" value="c"> She goes to school.</label>
-      </div>
+      const answers = {
+        q1: "b",
+        q2: "b",
+        q3: "a",
+        q4: "a",
+        q5: "b"
+      };
 
-      <div class="question">
-        <b>3. What should you do with a suspicious login link?</b>
-        <label><input type="radio" name="q3" value="a"> Avoid it and verify the sender.</label>
-        <label><input type="radio" name="q3" value="b"> Enter your password immediately.</label>
-        <label><input type="radio" name="q3" value="c"> Share it with everyone.</label>
-      </div>
+      let score = 0;
+      let unanswered = 0;
 
-      <button class="btn" type="submit">Check My Score</button>
-    </form>
-    <div id="quiz-result" aria-live="polite"></div>
-    <button id="retry" class="btn secondary hidden" onclick="resetQuiz()">Try Again</button>
-  </div>
-</section>
+      for (const question in answers) {
+        const selected = this.querySelector(
+          'input[name="' + question + '"]:checked'
+        );
 
-<section id="live">
-  <h2>🎥 Live Classes</h2>
-  <p class="subtitle">Learn with a teacher and other students online.</p>
+        if (!selected) {
+          unanswered++;
+        } else if (selected.value === answers[question]) {
+          score++;
+        }
+      }
 
-  <div class="card">
-    <span class="pill">ONLINE CLASSROOM</span>
-    <h3>Join a Live Learning Session</h3>
-    <p id="live-message">Our live classes will be announced here.
-    A teacher will provide a meeting link when a class is ready.</p>
+      const result = document.getElementById("quizResult");
 
-    <p><b>Class schedule:</b> To be announced</p>
-    <a id="join-class" class="btn hidden" href="#" target="_blank"
-       rel="noopener noreferrer">Join Live Class</a>
-    <p class="subtitle">A valid class link is required before you can join.</p>
-  </div>
-</section>
+      if (unanswered > 0) {
+        result.className = "quiz-result error";
+        result.textContent =
+          "Please answer all five questions. You have " +
+          unanswered + " unanswered.";
+        return;
+      }
 
-<section id="about">
-  <h2>🌍 About FreeLearn Academy</h2>
-  <div class="card">
-    <p>Our mission is to make learning easier and more accessible.
-    We aim to provide helpful lessons, practice quizzes, and
-    opportunities to learn together online.</p>
-    <p><b>Learning is for everyone.</b></p>
-  </div>
-</section>
-</main>
+      result.className = "quiz-result success";
+      result.textContent =
+        "Your score: " + score + " out of 5 (" +
+        Math.round((score / 5) * 100) +
+        "%). " +
+        (score === 5
+          ? "Excellent work!"
+          : "Review the notes and try again.");
 
-<footer>
-  <p><b>FreeLearn Academy</b></p>
-  <p>Learn for free. Build your future.</p>
-  <p>© <span id="year"></span> FreeLearn Academy</p>
-</footer>
+      result.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
 
-<script>
-// Open and close individual lessons.
-function toggleLesson(id) {
-  document.getElementById(id).classList.toggle("hidden");
-}
+    // Clear the result when the quiz is reset.
+    document.getElementById("quizForm").addEventListener("reset", function() {
+      const result = document.getElementById("quizResult");
+      result.textContent = "";
+      result.className = "quiz-result";
+    });
+  </script>
 
-// Mark the quiz and display the score.
-document.getElementById("quiz-form").addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  const answers = { q1: "b", q2: "c", q3: "a" };
-  let score = 0;
-  let unanswered = [];
-
-  for (const question in answers) {
-    const selected = document.querySelector(
-      'input[name="' + question + '"]:checked'
-    );
-
-    if (!selected) unanswered.push(question);
-    else if (selected.value === answers[question]) score++;
-  }
-
-  if (unanswered.length > 0) {
-    document.getElementById("quiz-result").textContent =
-      "Please answer all three questions before checking your score.";
-    return;
-  }
-
-  let message = "Your score: " + score + " out of 3. ";
-  if (score === 3) message += "Excellent work!";
-  else if (score === 2) message += "Good job! Review and try again.";
-  else message += "Keep learning and try again!";
-
-  document.getElementById("quiz-result").textContent = message;
-  document.getElementById("retry").classList.remove("hidden");
-});
-
-function resetQuiz() {
-  document.getElementById("quiz-form").reset();
-  document.getElementById("quiz-result").textContent = "";
-  document.getElementById("retry").classList.add("hidden");
-}
-
-// Update the copyright year.
-document.getElementById("year").textContent = new Date().getFullYear();
-
-/*
-TO ADD A LIVE CLASS:
-1. Create a Google Meet meeting.
-2. Copy its real meeting link.
-3. Replace the empty string below with that link.
-4. Save and publish the website again.
-*/
-const LIVE_CLASS_URL = "";
-
-if (LIVE_CLASS_URL.startsWith("https://meet.google.com/")) {
-  const joinButton = document.getElementById("join-class");
-  joinButton.href = LIVE_CLASS_URL;
-  joinButton.classList.remove("hidden");
-  document.getElementById("live-message").textContent =
-    "A live class link is available. Tap below to join.";
-}
-</script>
 </body>
 </html>
+
 
