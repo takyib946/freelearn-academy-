@@ -2,124 +2,357 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FreeLearn Academy</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f0f5ff;
-      color: #172033;
-    }
-    header {
-      background: #123b72;
-      color: white;
-      text-align: center;
-      padding: 25px 12px;
-    }
-    nav {
-      background: #082b54;
-      padding: 14px;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      margin: 10px;
-      text-decoration: none;
-    }
-    main {
-      max-width: 700px;
-      margin: auto;
-      padding: 15px;
-    }
-    .card {
-      background: white;
-      padding: 20px;
-      margin-bottom: 16px;
-      border-radius: 12px;
-    }
-    button {
-      background: #1769d2;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 8px;
-      margin: 5px 0;
-      font-size: 16px;
-    }
-    .option {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FreeLearn Academy | Learn for Free</title>
+<style>
+:root {
+  --blue: #2457e6;
+  --dark: #14213d;
+  --light: #f4f7ff;
+  --green: #16845b;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--dark);
+  background: #fff;
+  line-height: 1.6;
+}
+header {
+  background: white;
+  padding: 14px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 12px #15254a12;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.logo { font-size: 20px; font-weight: 800; color: var(--blue); }
+nav { display: flex; gap: 15px; flex-wrap: wrap; }
+nav a { text-decoration: none; color: var(--dark); font-size: 14px; }
+.hero {
+  padding: 65px 7%;
+  background: linear-gradient(135deg,#eaf0ff,#f3fff9);
+}
+.hero h1 { font-size: clamp(32px,6vw,52px); line-height: 1.15; margin: 12px 0; }
+.hero p { max-width: 600px; color: #536078; }
+.tag { color: var(--green); font-weight: bold; }
+.btn {
+  display: inline-block;
+  border: 0;
+  border-radius: 9px;
+  padding: 12px 17px;
+  background: var(--blue);
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 5px 5px 5px 0;
+}
+.btn.secondary { background: white; color: var(--blue); border: 1px solid #ccd7ff; }
+.btn:disabled { background: #aeb7ca; cursor: not-allowed; }
+section { padding: 42px 6%; }
+section h2 { font-size: 27px; margin-bottom: 5px; }
+.subtitle { color: #64718a; margin-top: 0; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(min(100%,240px),1fr));
+  gap: 18px;
+  margin-top: 22px;
+}
+.card {
+  border: 1px solid #e3e9f5;
+  border-radius: 15px;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 5px 18px #15254a08;
+}
+.card h3 { margin-top: 5px; }
+.emoji { font-size: 30px; }
+.pill {
+  display: inline-block;
+  background: #eaf0ff;
+  color: var(--blue);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.lesson-content {
+  background: var(--light);
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 12px;
+}
+.hidden { display: none; }
+#quiz-area { background: var(--light); padding: 20px; border-radius: 14px; }
+.question { padding: 12px 0; border-bottom: 1px solid #dce4f5; }
+.question label { display: block; padding: 5px 0; cursor: pointer; }
+#quiz-result { font-weight: bold; margin-top: 15px; }
+.notice {
+  background: #fff8e5;
+  border: 1px solid #f0dfa8;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+footer {
+  text-align: center;
+  padding: 28px 15px;
+  background: var(--dark);
+  color: white;
+}
+footer a { color: #cddaff; }
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccd5e5;
+  border-radius: 8px;
+  font-size: 16px;
+}
+@media(max-width:500px) {
+  header { align-items: flex-start; }
+  nav { gap: 10px; }
+  nav a { font-size: 13px; }
+  .hero { padding: 45px 6%; }
+}
+</style>
 </head>
 <body>
-  <header>
-    <h1>📚 FreeLearn Academy</h1>
-    <p>Free education for everyone!</p>
-  </header>
 
+<header>
+  <div class="logo">🎓 FreeLearn Academy</div>
   <nav>
     <a href="#home">Home</a>
-    <a href="#classes">Live Classes</a>
     <a href="#lessons">Lessons</a>
-    <a href="#quiz">Quiz</a>
+    <a href="#quiz">Quizzes</a>
+    <a href="#live">Live Classes</a>
   </nav>
+</header>
 
-  <main>
-    <section class="card" id="home">
-      <h2>Welcome, Learner!</h2>
-      <p>Study online, learn new skills and test your knowledge.</p>
-    </section>
+<main>
+<section class="hero" id="home">
+  <span class="tag">YOUR FUTURE STARTS HERE</span>
+  <h1>Learn anything.<br>Grow every day.</h1>
+  <p>
+    Welcome to FreeLearn Academy! Explore lessons, practise
+    your knowledge with quizzes, and join live classes.
+    Learning should be accessible to everyone.
+  </p>
+  <a class="btn" href="#lessons">Explore Lessons</a>
+  <a class="btn secondary" href="#quiz">Take a Quiz</a>
+</section>
 
-    <section class="card" id="classes">
-      <h2>🎥 Live Classes</h2>
-      <p>Our live classes will be announced here.</p>
-      <p>A teacher will provide a meeting link when a class is ready.</p>
-    </section>
+<section id="lessons">
+  <h2>📚 Free Lessons</h2>
+  <p class="subtitle">Choose a subject to start learning.</p>
 
-    <section class="card" id="lessons">
-      <h2>📖 Lesson 1: Introduction to HTML</h2>
-      <p>HTML is used to structure content on a website.</p>
-      <p>CSS controls how the website looks, while JavaScript
-      makes it interactive.</p>
-      <h3>Your first task</h3>
-      <p>Learn the purpose of HTML, CSS and JavaScript.</p>
-    </section>
+  <div class="grid">
+    <article class="card">
+      <div class="emoji">💻</div>
+      <span class="pill">ICT</span>
+      <h3>Introduction to Computing</h3>
+      <p>Learn about computers, hardware, software, and data.</p>
+      <button class="btn" onclick="toggleLesson('ict')">Open Lesson</button>
+      <div id="ict" class="lesson-content hidden">
+        <h4>What is a computer?</h4>
+        <p>A computer is an electronic device that accepts data,
+        processes it, stores it, and produces information.</p>
+        <h4>Basic computer components</h4>
+        <ul>
+          <li><b>Input:</b> Keyboard and mouse.</li>
+          <li><b>Processing:</b> The CPU processes instructions.</li>
+          <li><b>Output:</b> Monitor and printer.</li>
+          <li><b>Storage:</b> SSD, hard drive, and flash drive.</li>
+        </ul>
+        <p><b>Remember:</b> Data is raw facts; information is
+        processed data that has meaning.</p>
+      </div>
+    </article>
 
-    <section class="card" id="quiz">
-      <h2>📝 Quick Quiz</h2>
-      <p id="question">Which language structures a web page?</p>
-      <button class="option" onclick="answer(0)">A. HTML</button>
-      <button class="option" onclick="answer(1)">B. CSS</button>
-      <button class="option" onclick="answer(2)">C. JavaScript</button>
-      <p id="feedback"></p>
-      <p id="score">Score: 0</p>
-    </section>
-  </main>
+    <article class="card">
+      <div class="emoji">📝</div>
+      <span class="pill">English</span>
+      <h3>English Grammar Basics</h3>
+      <p>Improve your sentences, vocabulary, and communication.</p>
+      <button class="btn" onclick="toggleLesson('english')">Open Lesson</button>
+      <div id="english" class="lesson-content hidden">
+        <h4>Parts of speech</h4>
+        <ul>
+          <li><b>Noun:</b> A person, place, thing, or idea.</li>
+          <li><b>Verb:</b> An action or state, such as learn or be.</li>
+          <li><b>Adjective:</b> Describes a noun, such as good.</li>
+          <li><b>Adverb:</b> Describes an action, such as slowly.</li>
+        </ul>
+        <h4>Example sentence</h4>
+        <p>"I am learning English every day."</p>
+        <p>"I" is the subject; "am learning" is the verb phrase.</p>
+      </div>
+    </article>
 
-  <script>
-    let score = 0;
-    let answered = false;
+    <article class="card">
+      <div class="emoji">🔐</div>
+      <span class="pill">Cybersecurity</span>
+      <h3>Online Safety Basics</h3>
+      <p>Understand passwords, phishing, and safer internet use.</p>
+      <button class="btn" onclick="toggleLesson('security')">Open Lesson</button>
+      <div id="security" class="lesson-content hidden">
+        <h4>Protect your accounts</h4>
+        <ul>
+          <li>Use unique, strong passwords.</li>
+          <li>Enable two-factor authentication.</li>
+          <li>Never share verification codes.</li>
+          <li>Check links before opening them.</li>
+        </ul>
+        <h4>What is phishing?</h4>
+        <p>Phishing is a trick used to persuade people to reveal
+        passwords, payment details, or other sensitive information.</p>
+        <p>Practise security testing only on systems you own or
+        have clear permission to test.</p>
+      </div>
+    </article>
+  </div>
+</section>
 
-    function answer(choice) {
-      if (answered) return;
-      answered = true;
+<section id="quiz">
+  <h2>🧠 Test Your Knowledge</h2>
+  <p class="subtitle">Answer all three questions to see your score.</p>
 
-      if (choice === 0) {
-        score++;
-        document.getElementById("feedback").textContent =
-          "Correct! Well done!";
-      } else {
-        document.getElementById("feedback").textContent =
-          "Not quite. The correct answer is HTML.";
-      }
+  <div id="quiz-area">
+    <form id="quiz-form">
+      <div class="question">
+        <b>1. Which component processes computer instructions?</b>
+        <label><input type="radio" name="q1" value="a"> Monitor</label>
+        <label><input type="radio" name="q1" value="b"> CPU</label>
+        <label><input type="radio" name="q1" value="c"> Keyboard</label>
+      </div>
 
-      document.getElementById("score").textContent =
-        "Score: " + score + " / 1";
-    }
-  </script>
+      <div class="question">
+        <b>2. Which sentence is grammatically correct?</b>
+        <label><input type="radio" name="q2" value="a"> She go to school.</label>
+        <label><input type="radio" name="q2" value="b"> She going school.</label>
+        <label><input type="radio" name="q2" value="c"> She goes to school.</label>
+      </div>
+
+      <div class="question">
+        <b>3. What should you do with a suspicious login link?</b>
+        <label><input type="radio" name="q3" value="a"> Avoid it and verify the sender.</label>
+        <label><input type="radio" name="q3" value="b"> Enter your password immediately.</label>
+        <label><input type="radio" name="q3" value="c"> Share it with everyone.</label>
+      </div>
+
+      <button class="btn" type="submit">Check My Score</button>
+    </form>
+    <div id="quiz-result" aria-live="polite"></div>
+    <button id="retry" class="btn secondary hidden" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+
+<section id="live">
+  <h2>🎥 Live Classes</h2>
+  <p class="subtitle">Learn with a teacher and other students online.</p>
+
+  <div class="card">
+    <span class="pill">ONLINE CLASSROOM</span>
+    <h3>Join a Live Learning Session</h3>
+    <p id="live-message">Our live classes will be announced here.
+    A teacher will provide a meeting link when a class is ready.</p>
+
+    <p><b>Class schedule:</b> To be announced</p>
+    <a id="join-class" class="btn hidden" href="#" target="_blank"
+       rel="noopener noreferrer">Join Live Class</a>
+    <p class="subtitle">A valid class link is required before you can join.</p>
+  </div>
+</section>
+
+<section id="about">
+  <h2>🌍 About FreeLearn Academy</h2>
+  <div class="card">
+    <p>Our mission is to make learning easier and more accessible.
+    We aim to provide helpful lessons, practice quizzes, and
+    opportunities to learn together online.</p>
+    <p><b>Learning is for everyone.</b></p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p><b>FreeLearn Academy</b></p>
+  <p>Learn for free. Build your future.</p>
+  <p>© <span id="year"></span> FreeLearn Academy</p>
+</footer>
+
+<script>
+// Open and close individual lessons.
+function toggleLesson(id) {
+  document.getElementById(id).classList.toggle("hidden");
+}
+
+// Mark the quiz and display the score.
+document.getElementById("quiz-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const answers = { q1: "b", q2: "c", q3: "a" };
+  let score = 0;
+  let unanswered = [];
+
+  for (const question in answers) {
+    const selected = document.querySelector(
+      'input[name="' + question + '"]:checked'
+    );
+
+    if (!selected) unanswered.push(question);
+    else if (selected.value === answers[question]) score++;
+  }
+
+  if (unanswered.length > 0) {
+    document.getElementById("quiz-result").textContent =
+      "Please answer all three questions before checking your score.";
+    return;
+  }
+
+  let message = "Your score: " + score + " out of 3. ";
+  if (score === 3) message += "Excellent work!";
+  else if (score === 2) message += "Good job! Review and try again.";
+  else message += "Keep learning and try again!";
+
+  document.getElementById("quiz-result").textContent = message;
+  document.getElementById("retry").classList.remove("hidden");
+});
+
+function resetQuiz() {
+  document.getElementById("quiz-form").reset();
+  document.getElementById("quiz-result").textContent = "";
+  document.getElementById("retry").classList.add("hidden");
+}
+
+// Update the copyright year.
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/*
+TO ADD A LIVE CLASS:
+1. Create a Google Meet meeting.
+2. Copy its real meeting link.
+3. Replace the empty string below with that link.
+4. Save and publish the website again.
+*/
+const LIVE_CLASS_URL = "";
+
+if (LIVE_CLASS_URL.startsWith("https://meet.google.com/")) {
+  const joinButton = document.getElementById("join-class");
+  joinButton.href = LIVE_CLASS_URL;
+  joinButton.classList.remove("hidden");
+  document.getElementById("live-message").textContent =
+    "A live class link is available. Tap below to join.";
+}
+</script>
 </body>
 </html>
+
