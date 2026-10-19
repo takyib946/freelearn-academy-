@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FreeLearn Academy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f0f5ff;
+      color: #172033;
+    }
+    header {
+      background: #123b72;
+      color: white;
+      text-align: center;
+      padding: 25px 12px;
+    }
+    nav {
+      background: #082b54;
+      padding: 14px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 10px;
+      text-decoration: none;
+    }
+    main {
+      max-width: 700px;
+      margin: auto;
+      padding: 15px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      margin-bottom: 16px;
+      border-radius: 12px;
+    }
+    button {
+      background: #1769d2;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 5px 0;
+      font-size: 16px;
+    }
+    .option {
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📚 FreeLearn Academy</h1>
+    <p>Free education for everyone!</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#classes">Live Classes</a>
+    <a href="#lessons">Lessons</a>
+    <a href="#quiz">Quiz</a>
+  </nav>
+
+  <main>
+    <section class="card" id="home">
+      <h2>Welcome, Learner!</h2>
+      <p>Study online, learn new skills and test your knowledge.</p>
+    </section>
+
+    <section class="card" id="classes">
+      <h2>🎥 Live Classes</h2>
+      <p>Our live classes will be announced here.</p>
+      <p>A teacher will provide a meeting link when a class is ready.</p>
+    </section>
+
+    <section class="card" id="lessons">
+      <h2>📖 Lesson 1: Introduction to HTML</h2>
+      <p>HTML is used to structure content on a website.</p>
+      <p>CSS controls how the website looks, while JavaScript
+      makes it interactive.</p>
+      <h3>Your first task</h3>
+      <p>Learn the purpose of HTML, CSS and JavaScript.</p>
+    </section>
+
+    <section class="card" id="quiz">
+      <h2>📝 Quick Quiz</h2>
+      <p id="question">Which language structures a web page?</p>
+      <button class="option" onclick="answer(0)">A. HTML</button>
+      <button class="option" onclick="answer(1)">B. CSS</button>
+      <button class="option" onclick="answer(2)">C. JavaScript</button>
+      <p id="feedback"></p>
+      <p id="score">Score: 0</p>
+    </section>
+  </main>
+
+  <script>
+    let score = 0;
+    let answered = false;
+
+    function answer(choice) {
+      if (answered) return;
+      answered = true;
+
+      if (choice === 0) {
+        score++;
+        document.getElementById("feedback").textContent =
+          "Correct! Well done!";
+      } else {
+        document.getElementById("feedback").textContent =
+          "Not quite. The correct answer is HTML.";
+      }
+
+      document.getElementById("score").textContent =
+        "Score: " + score + " / 1";
+    }
+  </script>
+</body>
+</html>
